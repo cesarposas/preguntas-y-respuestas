@@ -1,0 +1,32 @@
+<div class="container">
+    <div class="row">
+        <div class="card text-center" style="padding: 20px;">
+            <h3>Login</h3>
+            <br>
+            <form [formGroup]="login" (ngSubmit)="log()">
+                <div class="form-group">
+                    <app-loading *ngIf="loading"></app-loading>
+                    <input type="text" class="form-control" placeholder="Usuario" formControlName="username">
+                    <span class="text-danger"
+                    *ngIf="login.get('username').hasError('required') && login.get('username').touched">
+                        The user <strong>is required</strong>
+                    </span>
+                </div>
+                <div class="form-group">
+                    <input type="password" class="form-control" placeholder="Contraseña" formControlName="password">
+                    <span class="text-danger"
+                    *ngIf="login.get('password').hasError('required') && login.get('password').touched">
+                        The password <strong>is required</strong>
+                    </span>
+                </div>
+                <div class="form-group">
+                    <button class="btn btn-primary mr-2" [disabled]="login.invalid" type="submit">Aceptar</button>
+                    <button class="btn btn-secondary mr-2" [routerLink]="['/inicio']" routerLinkActive="router-link-active" >Volver</button>
+                </div>
+                <div class="form-group">
+                    <a style="color: orange;" [routerLink]="['/inicio/register']" routerLinkActive="router-link-active" >Crear Cuenta</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,46 @@
+<div class="container">
+    <div class="row">
+        <div class="card text-center" style="padding: 20px;">
+            <h3>Register</h3>
+            <br>
+            <app-loading *ngIf="loading" style="padding: 10px;"></app-loading>
+            <form [formGroup]="register" (ngSubmit)="registerUser()">
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Usuario" formControlName="username">
+                    <span class="text-danger"
+                    *ngIf="register.get('username').hasError('required') && register.get('username').touched">
+                        The user <strong>is required</strong>
+                    </span>
+                </div>
+                <div class="form-group">
+                    <input type="password" class="form-control" placeholder="Contraseña" formControlName="password">
+                    <span class="text-danger"
+                    *ngIf="register.get('password').hasError('required') && register.get('password').touched">
+                        The password <strong>is required</strong>
+                    </span>
+                    <span class="text-danger"
+                    *ngIf="register.get('password').hasError('minlength') && register.get('password').touched">
+                        The confirmation password must have 4 characters<strong>is required</strong>
+                    </span>
+                </div>
+                <div class="form-group">
+                    <input type="password" class="form-control" placeholder="Repetir ontraseña" formControlName="confirmationPassword">
+                    <span class="text-danger"
+                    *ngIf="register.get('confirmationPassword').hasError('required') && register.get('confirmationPassword').touched">
+                        The confirmation password <strong>is required</strong>
+                    </span>
+                    <span class="text-danger"
+                    *ngIf="register.hasError('notSame')">
+                        The confirmation password <strong>is required</strong>
+                    </span>
+                </div>
+                <div class="form-group">
+                    <div class="form-group">
+                        <button class="btn btn-primary btn-reg mr-2" [disabled]="register.invalid" type="submit">Aceptar</button>
+                        <button class="btn btn-secondary mr-2" [routerLink]="['/inicio/login']" routerLinkActive="router-link-active" >Volver</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
