@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "vtA3N7gnGTTZ0f2nv+YcBa+mDZCMk/CVD5cioKykMeMxmeg4+SwL9kJRurmltrCMyY8mp2WiW6/ZFpwPllNn+Q==",
+  "dgSpecHash": "mzzIVEAeV1T1S0RcIuRu+uZKWnaBVdqvRgxQbzGxz9p6ehbUnjsIa92e2IU8ejrKF55BkerTPaeS7BUUCiH55w==",
   "success": true,
-  "projectFilePath": "C:\\Users\\cesar\\Desktop\\preguntas y respuestas\\server\\servidor\\server.csproj",
+  "projectFilePath": "C:\\Users\\cesar\\Desktop\\preguntas-y-respuestas\\server\\servidor\\server.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\cesar\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\cesar\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",

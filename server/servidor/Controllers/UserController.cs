@@ -42,30 +42,5 @@ namespace servidor.Controllers
                 return BadRequest(ex.Message);
             }
         }
-
-        //localhost:puerto/api/User/ChangePassword
-        [Route("ChangePassword")]
-        [HttpPut]
-        public async Task<IActionResult> ChangePassword([FromBody] ChangePasswordDTO changePasswordDTO)
-        {
-            try
-            {
-                int idUser = 5;
-                string oldPasswordEncrypted = Encrypt.EncryptPassword(changePasswordDTO.oldPassword);
-                string newPasswordEncrypted = Encrypt.EncryptPassword(changePasswordDTO.newPassword);
-                var user = await _userService.ValidatePassword(idUser, oldPasswordEncrypted);
-                if(user == null)
-                {
-                    return BadRequest(new { message = "Password incorrecta" });
-                }
-                user.password = newPasswordEncrypted;
-                await _userService.UpdatePassword(user);
-                return Ok(new { message = "Password actualizada con exito" });
-            }
-            catch(Exception ex)
-            {
-                return BadRequest(ex.Message);
-            }
-        }
     }
 }

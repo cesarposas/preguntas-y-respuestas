@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\cesar\\Desktop\\preguntas y respuestas\\server\\servidor\\server.csproj": {}
+    "C:\\Users\\cesar\\Desktop\\preguntas-y-respuestas\\server\\servidor\\server.csproj": {}
   },
   "projects": {
-    "C:\\Users\\cesar\\Desktop\\preguntas y respuestas\\server\\servidor\\server.csproj": {
+    "C:\\Users\\cesar\\Desktop\\preguntas-y-respuestas\\server\\servidor\\server.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\cesar\\Desktop\\preguntas y respuestas\\server\\servidor\\server.csproj",
+        "projectUniqueName": "C:\\Users\\cesar\\Desktop\\preguntas-y-respuestas\\server\\servidor\\server.csproj",
         "projectName": "server",
-        "projectPath": "C:\\Users\\cesar\\Desktop\\preguntas y respuestas\\server\\servidor\\server.csproj",
+        "projectPath": "C:\\Users\\cesar\\Desktop\\preguntas-y-respuestas\\server\\servidor\\server.csproj",
         "packagesPath": "C:\\Users\\cesar\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\cesar\\Desktop\\preguntas y respuestas\\server\\servidor\\obj\\",
+        "outputPath": "C:\\Users\\cesar\\Desktop\\preguntas-y-respuestas\\server\\servidor\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\cesar\\AppData\\Roaming\\NuGet\\NuGet.Config",

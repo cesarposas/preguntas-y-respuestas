@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using servidor.Domain.IServices;
 using servidor.Domain.Models;
+using servidor.DTO;
 using servidor.Utils;
 using System;
 using System.Collections.Generic;
@@ -41,22 +42,24 @@ namespace servidor.Controllers
                 return BadRequest(ex.Message);
             }
         }
-
+        //localhost:puerto/api/User/ChangePassword
         [Route("ChangePassword")]
         [HttpPut]
-        public async Task<IActionResult> ChangePassword([FromBody] User user)
+        public async Task<IActionResult> ChangePassword([FromBody] ChangePasswordDTO changePasswordDTO)
         {
             try
             {
-                var validateExistence = await _userService.ValidateExistence(user);
-                if (validateExistence==null)
+                int idUser = 13;
+                string oldPasswordEncrypted = Encrypt.EncryptPassword(changePasswordDTO.oldPassword);
+                string newPasswordEncrypted = Encrypt.EncryptPassword(changePasswordDTO.newPassword);
+                var user = await _userService.ValidatePassword(idUser, oldPasswordEncrypted);
+                if (user == null)
                 {
-                    return BadRequest(new { message = "El usuario " + user.userName + " no existe!" });
+                    return BadRequest(new { message = "Password incorrecta" });
                 }
-                user.password = Encrypt.EncryptPassword(user.password);
-                await _userService.SaveUser(user);
-
-                return Ok(new { message = "Contraseña modificada con existo!" });
+                user.password = newPasswordEncrypted;
+                await _userService.UpdatePassword(user);
+                return Ok(new { message = "Password actualizada con exito" });
             }
             catch (Exception ex)
             {
