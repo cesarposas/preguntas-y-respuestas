@@ -9,14 +9,15 @@ import { User } from '../models/user';
 })
 export class UsersService {
   myAppUrl: string;
-  myyApiUrl: string;
+  myApiUrl: string;
+  myApiChangePassword: string;
 
   constructor(private http: HttpClient) { 
     this.myAppUrl = environment.endpoint;
-    this.myyApiUrl = '/api/User';
+    this.myApiUrl = '/api/User';
   }
 
   saveUser(user: User): Observable<any>{
-    return this.http.post(this.myAppUrl + this.myyApiUrl, user);
+    return this.http.post(this.myAppUrl + this.myApiUrl, user);
   }
 }

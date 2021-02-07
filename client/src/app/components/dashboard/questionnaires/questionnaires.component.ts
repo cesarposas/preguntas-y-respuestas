@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { LoginService } from 'src/app/services/login.service';
 
 @Component({
   selector: 'app-questionnaires',
@@ -6,10 +7,17 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./questionnaires.component.css']
 })
 export class QuestionnairesComponent implements OnInit {
+  username: string; 
 
-  constructor() { }
+
+  constructor(private loginService: LoginService) { }
 
   ngOnInit(): void {
+    this.getUsername();
+  }
+
+  getUsername(): void{
+    this.username = this.loginService.getUsername();
   }
 
 }
