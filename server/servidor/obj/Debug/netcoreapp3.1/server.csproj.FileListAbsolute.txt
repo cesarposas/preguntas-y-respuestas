@@ -129,3 +129,4 @@ C:\Users\cesar\Desktop\preguntas-y-respuestas\server\servidor\obj\Debug\netcorea
 C:\Users\cesar\Desktop\preguntas-y-respuestas\server\servidor\obj\Debug\netcoreapp3.1\server.dll
 C:\Users\cesar\Desktop\preguntas-y-respuestas\server\servidor\obj\Debug\netcoreapp3.1\server.pdb
 C:\Users\cesar\Desktop\preguntas-y-respuestas\server\servidor\obj\Debug\netcoreapp3.1\server.genruntimeconfig.cache
+C:\Users\cesar\Desktop\preguntas-y-respuestas\server\servidor\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Authentication.JwtBearer.dll

@@ -17,7 +17,7 @@ export class QuestionnairesComponent implements OnInit {
   }
 
   getUsername(): void{
-    this.username = this.loginService.getUsername();
+    console.log(this.loginService.getTokenDecoded());
+    this.username = this.loginService.getTokenDecoded().sub;
   }
-
 }

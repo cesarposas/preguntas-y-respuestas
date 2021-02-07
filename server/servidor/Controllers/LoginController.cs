@@ -1,5 +1,9 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
+using server.Utils;
 using servidor.Domain.IServices;
 using servidor.Domain.Models;
 using servidor.DTO;
@@ -7,6 +11,8 @@ using servidor.Utils;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
+using System.Security.Claims;
 using System.Threading.Tasks;
 
 namespace servidor.Controllers
@@ -17,11 +23,13 @@ namespace servidor.Controllers
     {
         private readonly ILoginService _loginService;
         private readonly IUserService _userService;
+        private readonly IConfiguration _config;
 
-        public LoginController(ILoginService loginService, IUserService userService)
+        public LoginController(ILoginService loginService, IUserService userService, IConfiguration config)
         {
             _loginService = loginService;
             _userService = userService;
+            _config = config;
         }
 
         [HttpPost]
@@ -35,21 +43,28 @@ namespace servidor.Controllers
                 {
                     return BadRequest(new { message = "Usuario o contraseña invalidos" });
                 }
-                return Ok(new { user = user.userName });
+                string tokenString = JwtConfigurator.GetToken(dbUser, _config);
+                return Ok(new { token = tokenString });
             }
             catch(Exception ex)
             {
                 return BadRequest(ex.Message);
             }
         }
-        //localhost:puerto/api/User/ChangePassword
+
+
+
+        //localhost:puerto/api/login/ChangePassword
         [Route("ChangePassword")]
+        //With this rute it's necessary having authentication to ingres
+        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
         [HttpPut]
         public async Task<IActionResult> ChangePassword([FromBody] ChangePasswordDTO changePasswordDTO)
         {
             try
             {
-                int idUser = 13;
+                var identity = HttpContext.User.Identity as ClaimsIdentity;
+                int idUser = JwtConfigurator.GetTokenIdUsuario(identity);
                 string oldPasswordEncrypted = Encrypt.EncryptPassword(changePasswordDTO.oldPassword);
                 string newPasswordEncrypted = Encrypt.EncryptPassword(changePasswordDTO.newPassword);
                 var user = await _userService.ValidatePassword(idUser, oldPasswordEncrypted);
