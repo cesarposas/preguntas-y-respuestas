@@ -10,6 +10,7 @@ import { NewQuestionnaireComponent } from './components/dashboard/questionnaires
 import { StepOneComponent } from './components/dashboard/questionnaires/new-questionnaire/step-one/step-one.component';
 import { StepTwoComponent } from './components/dashboard/questionnaires/new-questionnaire/step-two/step-two.component';
 import { QuestionnairesComponent } from './components/dashboard/questionnaires/questionnaires.component';
+import { NewQuestionComponent } from './components/dashboard/questionnaires/new-questionnaire/step-two/new-question/new-question.component';
 
 
 //Declarar que un componente es hijo de otro en las rutas
@@ -26,7 +27,9 @@ const routes: Routes = [
     { path: 'changePassword', component: ChangePasswordComponent },
     {path: 'new-questionnaire', component: NewQuestionnaireComponent, children:[
       {path: 'step-one', component: StepOneComponent},
-      {path: 'step-two', component: StepTwoComponent}
+      {path: 'step-two', component: StepTwoComponent, children:[
+        {path: 'new-question', component: NewQuestionComponent}
+      ]}
     ]}
   ] },
   { path: '**', redirectTo: '/inicio', pathMatch: 'full' }

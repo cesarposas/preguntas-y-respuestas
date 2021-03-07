@@ -8,6 +8,8 @@ import { Questionnaire } from '../models/questionnaire';
   providedIn: 'root'
 })
 export class QuestionnaireService {
+  titleQuestionnaire: string;
+  descriptionQuestionnaire: string;
   myAppUrl: string;
   myApiUrl: string;
 

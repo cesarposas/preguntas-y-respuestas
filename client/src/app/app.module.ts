@@ -18,11 +18,10 @@ import { ChangePasswordComponent } from './components/dashboard/change-password/
 //interceptors
 import { AddTokenInterceptor } from '../app/helpers/add-token.interceptor';
 import { QuestionnairesComponent } from './components/dashboard/questionnaires/questionnaires.component';
-import { NewQuestionnaireComponent } from './components/dashboard/questionnaires/new-questionnaire/new-questionnaire.component';
 import { StepOneComponent } from './components/dashboard/questionnaires/new-questionnaire/step-one/step-one.component';
-import { NewQuestionComponent } from './components/dashboard/questionnaires/new-questionnaire/step-one/new-question/new-question.component';
 import { StepTwoComponent } from './components/dashboard/questionnaires/new-questionnaire/step-two/step-two.component';
-
+import { NewQuestionComponent } from './components/dashboard/questionnaires/new-questionnaire/step-two/new-question/new-question.component';
+import { NewQuestionnaireComponent } from './components/dashboard/questionnaires/new-questionnaire/new-questionnaire.component'
 @NgModule({
   declarations: [
     AppComponent,
@@ -35,10 +34,10 @@ import { StepTwoComponent } from './components/dashboard/questionnaires/new-ques
     LoadingComponent,
     ChangePasswordComponent,
     QuestionnairesComponent,
-    NewQuestionnaireComponent,
     StepOneComponent,
-    NewQuestionComponent,
     StepTwoComponent,
+    NewQuestionComponent,
+    NewQuestionnaireComponent
   ],
   imports: [
     BrowserModule,

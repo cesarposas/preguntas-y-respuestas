@@ -23,4 +23,9 @@ export class StepOneComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  stepOne(): void{
+    this.questionnaireService.titleQuestionnaire = this.questionnaireData.value.title;
+    this.questionnaireService.descriptionQuestionnaire = this.questionnaireData.value.description;
+    this.router.navigate(['/dashboard/new-questionnaire/step-two'])
+  }
 }

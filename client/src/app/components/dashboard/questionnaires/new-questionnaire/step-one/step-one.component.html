@@ -2,15 +2,21 @@
     <div class="col-lg-6 offset-lg-3">
         <h3 class="text-center">Datos del cuestionario</h3>
         <br>
-        <form [formGroup]="questionnaireData">
+        <form [formGroup]="questionnaireData" (ngSubmit)="stepOne()">
             <div class="form-group">
                 <input type="text" class="form-control" placeholder="Ingese titulo del cuestionario" formControlName="title">
+                <div class="text-danger" *ngIf="questionnaireData.get('title').hasError('required') && questionnaireData.get('title').touched">
+                    El titulo <strong>es requerido</strong>
+                </div>
             </div>
             <div class="form-group">
                 <textarea rows="3"  placeholder="Ingrese la descripción del cuestionario"
                     formControlName="description" class="form-control"></textarea>
+                    <div class="text-danger" *ngIf="questionnaireData.get('description').hasError('required') && questionnaireData.get('description').touched">
+                        La descripción <strong>es requerida</strong>
+                    </div>
             </div>
-            <button [disabled]="questionnaireData.invalid" class="btn btn-success float-right">Siguiente</button>
+            <button type="submit" [disabled]="questionnaireData.invalid" class="btn btn-success float-right">Siguiente</button>
         </form>
     </div>
 </div>
