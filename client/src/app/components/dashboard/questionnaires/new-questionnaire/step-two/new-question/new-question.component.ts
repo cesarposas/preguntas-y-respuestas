@@ -1,7 +1,6 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 //Form array es para los formularios dinamicos
 import { FormBuilder, FormGroup, Validators, FormArray } from '@angular/forms';
-import { Console } from 'console';
 import { ToastrService } from 'ngx-toastr';
 import { Answer } from 'src/app/models/answer';
 import { Question } from 'src/app/models/question';

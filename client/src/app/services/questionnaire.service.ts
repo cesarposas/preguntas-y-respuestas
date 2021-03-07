@@ -16,7 +16,7 @@ export class QuestionnaireService {
 
   constructor(private http: HttpClient) {
     this.myAppUrl = environment.endpoint;
-    this.myApiUrl = '/api/Questionnaire';
+    this.myApiUrl = '/api/questionnaire';
    }
 
    saveQuestionnaire(questionnaire: Questionnaire): Observable<any>{
