@@ -1,11 +1,11 @@
 export class Answer{
     id?: number;
-    description: string;
+    title: string;
     isCorrect: boolean;
 
-    constructor(description: string, isCorrect: boolean, id?: number){
+    constructor(title: string, isCorrect: boolean, id?: number){
         this.id = id;
-        this.description = description;
+        this.title = title;
         this.isCorrect = isCorrect;
     }
 }

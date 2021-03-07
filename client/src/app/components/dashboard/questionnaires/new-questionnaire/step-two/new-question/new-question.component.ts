@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 //Form array es para los formularios dinamicos
 import { FormBuilder, FormGroup, Validators, FormArray } from '@angular/forms';
 import { Console } from 'console';
@@ -15,7 +15,9 @@ export class NewQuestionComponent implements OnInit {
   newQuestion: FormGroup;
   question: Question;
   correctAnswer= 0;
-
+  //para pasar datos de componente hijo a componente padre
+  //creamos el emisor de eventos que escucharemos en la clase padre
+  @Output() sendQuestion = new EventEmitter<Question>();
   
   constructor(private fb: FormBuilder,
     private toastr: ToastrService){
@@ -50,7 +52,7 @@ export class NewQuestionComponent implements OnInit {
 
   addAnswer(): void{
     this.getAnswers.push(this.fb.group({
-      description: ['', Validators.required],
+      title: ['', Validators.required],
       isCorrect: 0
     }))
   }
@@ -70,7 +72,7 @@ export class NewQuestionComponent implements OnInit {
 
   addQuestion(): void{
     //obtenemos el titulo de la pregunta del formulario
-    const answerDescription = this.newQuestion.get('title').value;
+    const questionTitle = this.newQuestion.get('title').value;
 
     //obtenemos el  array de respuestas del formulario
     const questionAnswers = this.newQuestion.get('answers').value;
@@ -84,16 +86,16 @@ export class NewQuestionComponent implements OnInit {
       let id = index;
       let correct: boolean = (index === element.isCorrect);
       console.log(correct);
-      const answer: Answer = new Answer(element.description, correct, id);
+      const answer: Answer = new Answer(element.title, correct, id);
 
       arrayAnswers.push(answer);
     });
 
     //Creamos el objeto question
-    const question: Question = new Question(answerDescription, arrayAnswers);
-
-    console.log(this.correctAnswer);
-    console.log(question);
+    const question: Question = new Question(questionTitle, arrayAnswers);
+    //llamo el emisor y le paso una question tal
+    //y como lo he configurado
+    this.sendQuestion.emit(question);
 
     this.reset();
   }

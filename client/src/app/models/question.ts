@@ -1,12 +1,13 @@
 import { Answer } from "./answer";
 
 export class Question{
-    description: string;
+    title: string;
     listAnswer: Answer[];
     hide?: boolean;
 
     constructor(description: string, listAnswer: Answer[]){
-        this.description = description;
+        this.title = description;
         this.listAnswer = listAnswer;
+        this.hide = true;
     }
 }

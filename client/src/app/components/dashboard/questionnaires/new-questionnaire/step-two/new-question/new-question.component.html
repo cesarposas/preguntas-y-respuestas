@@ -8,7 +8,7 @@
     <!-- loop para añadir form dinamico -->
     <div formArrayName="answers"  *ngFor="let answer of getAnswers.controls; let i = index">
         <div class="input-group" [formGroupName]="i" style="padding-top:10px;">
-            <input type="text" class="form-control" placeholder="{{answer.description}}" formControlName="description">
+            <input type="text" class="form-control" placeholder="{{answer.title}}" formControlName="title">
             <div class="input-group-prepend">
                 <div class="input-group-text">
                     <!-- is correct NO TIENE SI ES CORRECTA = solo indica su
@@ -18,12 +18,12 @@
             </div>
             <span class="material-icons delete-icon" (click)="deleteAnswer(i)">delete</span>
         </div>
-        <span class="text-danger" *ngIf="answer.get('description').hasError('required') && answer.get('description').touched">
+        <span class="text-danger" *ngIf="answer.get('title').hasError('required') && answer.get('title').touched">
             La descripción <strong>es requerida</strong>
         </span>
     </div>
     <span class="material-icons add-icon" (click)="addAnswer(i)">add</span>
     <br>
     <br>
-    <button type="submit" class="btn btn-primary float-right">Agregar</button>
+    <button type="submit" class="btn btn-primary float-right">Guardar pregunta</button>
 </form>
