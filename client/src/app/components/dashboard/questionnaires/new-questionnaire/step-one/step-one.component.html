@@ -1,0 +1,16 @@
+<div class="row">
+    <div class="col-lg-6 offset-lg-3">
+        <h3 class="text-center">Datos del cuestionario</h3>
+        <br>
+        <form [formGroup]="questionnaireData">
+            <div class="form-group">
+                <input type="text" class="form-control" placeholder="Ingese titulo del cuestionario" formControlName="title">
+            </div>
+            <div class="form-group">
+                <textarea rows="3"  placeholder="Ingrese la descripción del cuestionario"
+                    formControlName="description" class="form-control"></textarea>
+            </div>
+            <button [disabled]="questionnaireData.invalid" class="btn btn-success float-right">Siguiente</button>
+        </form>
+    </div>
+</div>
