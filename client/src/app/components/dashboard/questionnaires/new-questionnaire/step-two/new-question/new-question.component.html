@@ -1,6 +1,9 @@
-<form [formGroup]="newQuestion" >
+<form [formGroup]="newQuestion" (submit)="addQuestion()" >
     <div class="class form-group input-group-lg">
-        <input type="text" class="form-control" placeholder="Ingrese pregunta">
+        <input type="text" class="form-control" placeholder="Ingrese pregunta" formControlName="title">
+        <span class="text-danger" *ngIf="newQuestion.get('title').hasError('required') && newQuestion.get('title').touched">
+            El titulo <strong>es requerido</strong>
+        </span>
     </div>
     <!-- loop para añadir form dinamico -->
     <div formArrayName="answers"  *ngFor="let answer of getAnswers.controls; let i = index">
@@ -8,14 +11,19 @@
             <input type="text" class="form-control" placeholder="{{answer.description}}" formControlName="description">
             <div class="input-group-prepend">
                 <div class="input-group-text">
-                    <input type="radio" name="isCorrect" formControlName="isCorrect">
+                    <!-- is correct NO TIENE SI ES CORRECTA = solo indica su
+                    indice que luego se compara con la correcta -->
+                    <input type="radio" (change)="setCorrectAnswer(i)" [value]="i" name="isCorrect" formControlName="isCorrect">
                 </div>
             </div>
             <span class="material-icons delete-icon" (click)="deleteAnswer(i)">delete</span>
         </div>
+        <span class="text-danger" *ngIf="answer.get('description').hasError('required') && answer.get('description').touched">
+            La descripción <strong>es requerida</strong>
+        </span>
     </div>
-    <span class="material-icons add-icon" (click)="addAnswer()">add</span>
+    <span class="material-icons add-icon" (click)="addAnswer(i)">add</span>
     <br>
     <br>
-    <button class="btn btn-primary float-right">Agregar</button>
+    <button type="submit" class="btn btn-primary float-right">Agregar</button>
 </form>
